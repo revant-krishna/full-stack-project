@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Vault | Expense Tracker</title>
+    <meta name="description" content="A premium personal expense tracker with stunning UI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header / Balance Section -->
+        <header class="hero-section">
+            <div class="top-bar">
+                <div class="greeting">
+                    <h1 id="user-greeting">Hi!</h1>
+                    <p>Welcome back</p>
+                </div>
+                <div class="profile-actions" style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="logout-btn" id="logout-btn">
+                        <i class='bx bx-log-out'></i> Logout
+                    </button>
+                    <div class="profile-pic">
+                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Profile">
+                    </div>
+                </div>
+            </div>
+
+            <div class="balance-card">
+                <div class="glow-effect"></div>
+                <div class="balance-content">
+                    <p class="balance-label">Total Balance</p>
+                    <h2 class="balance-amount" id="total-balance">$0.00</h2>
+                    
+                    <div class="income-expense-row">
+                        <div class="stat-box income">
+                            <div class="icon-wrap"><i class='bx bx-trending-up'></i></div>
+                            <div class="stat-info">
+                                <span>Income</span>
+                                <strong id="total-income">+$0.00</strong>
+                            </div>
+                        </div>
+                        <div class="stat-line"></div>
+                        <div class="stat-box expense">
+                            <div class="icon-wrap"><i class='bx bx-trending-down'></i></div>
+                            <div class="stat-info">
+                                <span>Expense</span>
+                                <strong id="total-expense">-$0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="content-section">
+            <div class="section-header">
+                <h3>Recent Transactions</h3>
+                <button class="view-all">View All</button>
+            </div>
+            
+            <div class="transaction-list" id="transaction-list">
+                <!-- Transactions will be dynamically injected here -->
+                <div class="empty-state">
+                    <i class='bx bx-wallet'></i>
+                    <p>No transactions yet.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Floating Action Button -->
+        <button class="fab" id="open-modal-btn" aria-label="Add Transaction">
+            <i class='bx bx-plus'></i>
+        </button>
+
+        <!-- Add Transaction Modal -->
+        <div class="modal-overlay" id="transaction-modal">
+            <div class="modal-content">
+                <button class="close-modal" id="close-modal-btn"><i class='bx bx-x'></i></button>
+                <h2>Add Transaction</h2>
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <div class="type-toggle">
+                            <input type="radio" id="type-expense" name="type" value="expense" checked>
+                            <label for="type-expense" class="toggle-btn expense-btn">Expense</label>
+                            
+                            <input type="radio" id="type-income" name="type" value="income">
+                            <label for="type-income" class="toggle-btn income-btn">Income</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <div class="input-with-icon">
+                            <i class='bx bx-dollar'></i>
+                            <input type="number" id="amount" step="0.01" placeholder="0.00" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Title / Description</label>
+                        <div class="input-with-icon">
+                            <i class='bx bx-edit-alt'></i>
+                            <input type="text" id="title" placeholder="Groceries, Salary, etc." required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <div class="input-with-icon">
+                            <i class='bx bx-category'></i>
+                            <select id="category" required>
+                                <option value="food">Food & Dining</option>
+                                <option value="shopping">Shopping</option>
+                                <option value="transport">Transportation</option>
+                                <option value="bills">Bills & Utilities</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="health">Health & Fitness</option>
+                                <option value="salary">Salary</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <span>Save Transaction</span>
+                        <i class='bx bx-check'></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
